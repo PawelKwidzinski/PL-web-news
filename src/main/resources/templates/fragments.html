@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:fragment="headerlinks">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.css}">
+        <link rel="stylesheet" th:href="@{/styles.css}">
+    </th:block>
+</head>
+<body>
+<th:block th:fragment="navigator">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:lightgray">
+            <a class="navbar-brand mb-0 h1" href="/">Sport News</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/articles/list}">Articles</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav class="navbar fixed-bottom navbar-light" style="background-color: black">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">&copy; 2020 Paweł Kwidziński</a>
+        </nav>
+    </header>
+</th:block>
+
+<th:block th:fragment="footerscripts">
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.16.1/popper.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+</th:block>
+
+</body>
+
+</html>

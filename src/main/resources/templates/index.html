@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <div th:replace="fragments :: headerlinks" th:remove="tag"></div>
+</head>
+<body>
+
+<header th:replace="fragments :: navigator"></header>
+<main role="main" class="main">
+    <div class="container">
+        <div class="welcome col-md-12">
+                <h1>Welcome in Sport News!</h1>
+        </div>
+    </div>
+</main>
+
+</body>
+<div th:replace="fragments :: footerscripts"></div>
+</html>
