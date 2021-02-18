@@ -19,10 +19,8 @@ public class NewsApi {
     private String apiKey;
     Logger logger = LoggerFactory.getLogger(NewsApi.class);
 
-    public Optional<News> getDataFromRemoteApi() {
-        final String country = "pl";
-        final String category = "sport";
 
+    public Optional<News> getDataFromRemoteApi(String country, String category) {
         try {
             RestTemplate restTemplate = new RestTemplate();
             UriComponents url = UriComponentsBuilder
