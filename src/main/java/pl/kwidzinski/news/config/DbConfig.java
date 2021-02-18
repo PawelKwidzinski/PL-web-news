@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 import org.springframework.jdbc.core.JdbcTemplate;
+import pl.kwidzinski.news.api.Category;
+import pl.kwidzinski.news.api.Country;
 import pl.kwidzinski.news.api.NewsApi;
 import pl.kwidzinski.news.model.News;
 
@@ -29,18 +31,50 @@ public class DbConfig {
 
     @EventListener(ApplicationReadyEvent.class)
     public void initDB() {
-        final String sqlDropTable = "DROP TABLE IF EXISTS news";
-        getJdbcTemplate().update(sqlDropTable);
+        final String sqlGeneralDropTable = sqlDropTable(Category.GENERAL.getTableName());
+        getJdbcTemplate().update(sqlGeneralDropTable);
 
-        final String sqlCreateTable = "CREATE TABLE news(news_id int AUTO_INCREMENT PRIMARY KEY, title VARCHAR(1000), " +
-                "image_url VARCHAR(1000), description VARCHAR(1000), url VARCHAR(1000))";
-        getJdbcTemplate().update(sqlCreateTable);
+        final String sqlBusinessDropTable = sqlDropTable(Category.BUSINESS.getTableName());
+        getJdbcTemplate().update(sqlBusinessDropTable);
 
-        final String sqlInsert = "INSERT INTO news (title, image_url, description, url) VALUES (?, ? ,? ,?)";
+        final String sqlSportsDropTable = sqlDropTable(Category.SPORT.getTableName());
+        getJdbcTemplate().update(sqlSportsDropTable);
 
-        Optional<News> newsOptional = newsApi.getDataFromRemoteApi();
+        final String sqlCreateTableGeneral = sqlCreateTable(Category.GENERAL.getTableName());
+        getJdbcTemplate().update(sqlCreateTableGeneral);
+
+        final String sqlCreateTableBusiness = sqlCreateTable(Category.BUSINESS.getTableName());
+        getJdbcTemplate().update(sqlCreateTableBusiness);
+
+        final String sqlCreateTableSport = sqlCreateTable(Category.SPORT.getTableName());
+        getJdbcTemplate().update(sqlCreateTableSport);
+
+        final String sqlInsertGeneral = insertData(Category.GENERAL.getTableName());
+        final String sqlInsertBusiness = insertData(Category.BUSINESS.getTableName());
+        final String sqlInsertSport = insertData(Category.SPORT.getTableName());
+
+        insertRestData(sqlInsertGeneral, Country.PL.getName(), Category.GENERAL.name().toLowerCase());
+        insertRestData(sqlInsertBusiness, Country.PL.getName(), Category.BUSINESS.name().toLowerCase());
+        insertRestData(sqlInsertSport, Country.PL.getName(), Category.SPORT.name().toLowerCase());
+    }
+
+    private String sqlDropTable(String tableName) {
+        return "DROP TABLE IF EXISTS " + tableName;
+    }
+
+    private String sqlCreateTable(String tableName) {
+        return "CREATE TABLE " + tableName +"(news_id int AUTO_INCREMENT PRIMARY KEY, title VARCHAR(200), " +
+                "image_url VARCHAR(500), description VARCHAR(500), url VARCHAR(500), publication_date VARCHAR(25))";
+    }
+
+    private String insertData(String tableName) {
+        return "INSERT INTO " + tableName + "(title, image_url, description, url, publication_date) VALUES (?, ? ,? ,?, ?)";
+    }
+
+    private void insertRestData(final String sqlInsert, String country, String category) {
+        Optional<News> newsOptional = newsApi.getDataFromRemoteApi(country, category);
         newsOptional.ifPresent(news -> news.getArticles()
-            .forEach(article -> getJdbcTemplate().update(sqlInsert, article.getTitle(), article.getUrlToImage(),
-                    article.getDescription(), article.getUrl())));
+                .forEach(article -> getJdbcTemplate().update(sqlInsert, article.getTitle(), article.getUrlToImage(),
+                        article.getDescription(), article.getUrl(), article.getPublishedAt())));
     }
 }
