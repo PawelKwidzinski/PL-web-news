@@ -1,32 +1,33 @@
 
 body {
-    background-image: url("images/newspaper_1920.jpg");
+    background-image: url(images/newspaper_1920.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-body .general {
-    background-image: url("images/warsaw_fog_1920.jpg");
+.general {
+    background-image: url(images/warsaw_fog_1920.jpg);
 }
 
-body .business {
-    background-image: url("images/business_1920.jpg");
+.business {
+    background-image: url(images/business_1920.jpg);
 }
 
-body.sport {
-    background-image: url("images/football_1920.jpg");
+.sport {
+    background-image: url(images/football_1920.jpg);
 }
 
 .welcome h1{
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     text-align: center;
-    margin: 50px auto;
+    margin: 100px auto;
+    padding: 10px 10px;
     color: black;
     border: solid 1px #5a5a5a;
     border-radius: 5px;
-    background-color: lightgrey;
+    background-color: white;
     opacity: 0.90;
 }
 
