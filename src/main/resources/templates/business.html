@@ -8,19 +8,17 @@
 <body class="business">
 <header th:replace="fragments :: navigator"></header>
 
-<!--https://www.affanhamdani.me/creating-a-shopping-cart-using-thmleaf-template-and-java/-->
-
 <div class="container">
     <div class="row">
         <div class="card mb-3" th:each="article : ${businessArticles}">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img class="card-img-top" th:src="${article.getImageUrl().isEmpty()} ? 'Brak danych' : ${article.getImageUrl()}" alt="Card image cap">
+                    <img class="card-img" th:src="${article.getImageUrl().isEmpty()} ? 'Brak danych' : ${article.getImageUrl()}" alt="Card image cap">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${article.getTitle()}">Card title</h5>
-                        <p class="card-text" th:text="${article.getDescription().isEmpty()} ?  'Brak danych' : ${article.getDescription()}"></p>
+                        <p class="card-text" th:text="${article.getDescription() == null} ?  'Brak danych' : ${article.getDescription()}"></p>
                         <a th:href="${article.getUrl()}" class="btn btn-primary">Więcej</a>
                     </div>
                 </div>
@@ -28,19 +26,7 @@
         </div>
     </div>
 </div>
-<!--CARDS SIDE BY SIDE-->
-<!--        <div class="col-xl-4" th:each="article : ${articles}" style="margin: 10px 0">-->
-<!--            <div class="card" style="width: 22rem;">-->
-<!--                <img class="card-img-top" th:src="${article.getImageUrl()}" alt="Card image cap">-->
-<!--                <div class="card-body">-->
-<!--                    <p class="card-title" th:text="${article.getTitle()}"></p>-->
-<!--                    <hr>-->
-<!--                    <p class="card-text" th:text="${article.getDescription()}"></p>-->
-<!--                    <a th:href="${article.getUrl()}" class="btn btn-primary">Więcej</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--</div>-->
+
 <div th:replace="fragments :: footer"></div>
 <div th:replace="fragments :: footerscripts"></div>
 </body>
