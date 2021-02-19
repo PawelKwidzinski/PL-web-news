@@ -3,6 +3,7 @@ package pl.kwidzinski.news.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import pl.kwidzinski.news.api.Category;
 import pl.kwidzinski.news.dto.ArticleDto;
 
 import java.sql.ResultSet;
@@ -23,7 +24,8 @@ public class NewsDaoImpl implements NewsDao {
     @Override
     public List<ArticleDto> findAll(String tableName) {
         List<ArticleDto> articleList = new ArrayList<>();
-        String sql = "SELECT * FROM " + tableName;
+        String sql = "SELECT * FROM " + tableName + " WHERE NOT (title IS NULL OR image_url IS NULL OR description " +
+                "IS NULL OR url IS NULL OR publication_date IS NULL)";
 
         final List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
         maps.forEach(element -> articleList.add(new ArticleDto(
