@@ -1,3 +1,7 @@
+ * {
+     padding: 0;
+     margin: 0;
+ }
 
 body {
     background-image: url("images/newspaper_1920.jpg");
@@ -16,6 +20,17 @@ body {
 
 .sport {
     background-image: url("images/football_1920.jpg");
+}
+
+.navbar.fixed-top {
+    background-color:lightgray;
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .welcome h1{
@@ -40,6 +55,8 @@ body {
 }
 
 .card-body {
+    margin: 5px 10px;
+    padding: 5px 5px;
     font-family: 'Roboto Condensed', sans-serif;
 }
 .card-body h5 {
@@ -48,6 +65,7 @@ body {
 }
 
 .card-body p {
+    font-family: 'Roboto', sans-serif;
     font-size: 18px;
     font-weight: 400;
 }
@@ -56,9 +74,35 @@ body {
     letter-spacing: 1px;
 }
 
-.card-img-top {
+.card-img {
+    border-radius: 10px;
+    padding: 7px 7px;
     margin: 5px 5px;
     max-height: 250px;
+}
+
+@media (min-width: 320px) and (orientation: portrait){
+    .container {
+        margin: 140px auto 50px;
+    }
+    .navbar.fixed-top {
+        font-size: 40px;
+    }
+    .navbar-brand {
+        margin: 0 auto;
+        font-size: 60px;
+    }
+    .welcome h1{
+        margin: 200px auto;
+        font-size: 50px;
+    }
+
+    .card-body h5{
+        font-size: 36px;
+    }
+    .card-body p{
+        font-size: 26px;
+    }
 }
 
 
