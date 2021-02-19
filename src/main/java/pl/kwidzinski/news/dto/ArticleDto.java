@@ -6,20 +6,10 @@ import javax.validation.constraints.NotNull;
 public class ArticleDto {
 
     private Long id;
-    @NotBlank(message = "Title cannot be blank.")
-    @NotNull(message = "Title cannot be null.")
     private String title;
-    @NotBlank(message = "Image url cannot be blank.")
-    @NotNull(message = "Image url cannot be null.")
     private String imageUrl;
-    @NotBlank(message = "Description cannot be blank.")
-    @NotNull(message = "Description cannot be null.")
     private String description;
-    @NotBlank(message = "URL cannot be blank.")
-    @NotNull(message = "URL cannot be null.")
     private String url;
-    @NotBlank(message = "Publication date cannot be blank.")
-    @NotNull(message = "Publication date be null.")
     private String publicationDate;
 
     public ArticleDto(final Long id, final String title, final String imageUrl, final String description,
