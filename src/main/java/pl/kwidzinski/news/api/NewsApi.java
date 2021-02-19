@@ -28,7 +28,7 @@ public class NewsApi {
                     .buildAndExpand(country, category, apiKey);
 
             Optional<News> articleNews = Optional.ofNullable(restTemplate.getForObject(url.toUriString(), News.class));
-            if (articleNews.isEmpty()) {
+            if (!articleNews.isPresent()) {
                 logger.error("No data \"News\" from remote API");
             }
             return articleNews;
