@@ -15,12 +15,12 @@
         <div class="card mb-3" th:each="article : ${generalArticles}">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img class="card-img-top" th:src="${article.getImageUrl()}" alt="Card image cap">
+                    <img class="card-img-top" th:src="${article.getImageUrl().isEmpty()} ? 'Brak danych' : ${article.getImageUrl()}" alt="Card image cap">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${article.getTitle()}">Card title</h5>
-                        <p class="card-text" th:text="${article.getDescription()}"></p>
+                        <p class="card-text" th:text="${article.getDescription().isEmpty()} ?  'Brak danych' : ${article.getDescription()}"></p>
                         <a th:href="${article.getUrl()}" class="btn btn-primary">Więcej</a>
                     </div>
                 </div>
