@@ -1,7 +1,7 @@
- * {
-     padding: 0;
-     margin: 0;
- }
+* {
+    padding: 0;
+    margin: 0;
+}
 
 body {
     background-image: url("images/newspaper_1920.jpg");
@@ -22,8 +22,24 @@ body {
     background-image: url("images/football_1920.jpg");
 }
 
+.technology {
+    background-image: url("images/cyber_1920.jpg");
+}
+
+.science {
+    background-image: url("images/astronaut_1920.jpg");
+}
+
+.health {
+    background-image: url("images/blood_1920.jpg");
+}
+
+.entertainment {
+    background-image: url("images/popcorn_1920.jpg");
+}
+
 .navbar.fixed-top {
-    background-color:lightgray;
+    background-color: lightgray;
     font-family: 'Oswald', sans-serif;
     font-size: 22px;
 }
@@ -33,7 +49,7 @@ body {
     font-weight: 700;
 }
 
-.welcome h1{
+.welcome h1 {
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     text-align: center;
@@ -59,6 +75,7 @@ body {
     padding: 5px 5px;
     font-family: 'Roboto Condensed', sans-serif;
 }
+
 .card-body h5 {
     font-size: 24px;
     font-weight: 700;
@@ -81,34 +98,48 @@ body {
     max-height: 250px;
 }
 
-@media (min-width: 320px) and (orientation: portrait){
+.stretched-link:after {
+    pointer-events: none;
+}
+
+@media (min-width: 320px) and (orientation: portrait) {
     .container {
         margin: 140px auto 50px;
     }
-    button.navbar-toggler{
+
+    button.navbar-toggler {
         font-size: 36px;
         border: 4px solid transparent;
     }
+
     .navbar.fixed-top {
         font-size: 50px;
     }
+
     .navbar-brand {
         margin: 0 auto;
         font-size: 66px;
     }
-    .welcome h1{
+
+    .welcome h1 {
         margin: 300px auto;
         font-size: 76px;
     }
 
-    .card-body h5{
+    .card-body h5 {
         font-size: 36px;
     }
-    .card-body p{
+
+    .card-body p {
         font-size: 26px;
     }
+
     .card-body a {
         font-size: 20px;
+    }
+
+    .stretched-link:after {
+        pointer-events: auto;
     }
 }
 
