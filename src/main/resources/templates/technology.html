@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Technologie</title>
+    <div th:replace="fragments :: headerlinks" th:remove="tag"></div>
+</head>
+<body class="technology">
+<header th:replace="fragments :: navigator"></header>
+
+<div class="container">
+    <div class="row" th:each="article : ${technologiesArticles}">
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img class="card-img" th:src="${article.getImageUrl()}" alt="Card image">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${article.getTitle()}">Card title</h5>
+                        <p class="card-text" th:text="${article.getDescription()}"></p>
+                        <a th:href="${article.getUrl()}" class="btn btn-primary stretched-link">Więcej</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+<div th:replace="fragments :: footerscripts"></div>
+</body>
+</html>
