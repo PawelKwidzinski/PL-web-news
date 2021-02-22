@@ -36,4 +36,27 @@ public class ArticleController {
         model.addAttribute("sportArticles", newsDao.findAll(Category.SPORT.getTableName()));
         return "sport";
     }
+
+    @GetMapping("/technologies")
+    public String getTechnologyArticles(Model model) {
+        model.addAttribute("technologiesArticles", newsDao.findAll(Category.TECHNOLOGY.getTableName()));
+        return "technology";
+    }
+
+    @GetMapping("/science")
+    public String getScienceArticles(Model model) {
+        model.addAttribute("scienceArticles", newsDao.findAll(Category.SCIENCE.getTableName()));
+        return "science";
+    }
+
+    @GetMapping("/health")
+    public String getHealthArticles(Model model) {
+        model.addAttribute("healthArticles", newsDao.findAll(Category.HEALTH.getTableName()));
+        return "health";
+    }
+    @GetMapping("/entertainment")
+    public String getEntertainmentArticles(Model model) {
+        model.addAttribute("entertainmentArticles", newsDao.findAll(Category.ENTERTAINMENT.getTableName()));
+        return "entertainment";
+    }
 }
