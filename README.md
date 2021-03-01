@@ -11,6 +11,9 @@ Application to display headlines from Polish websites with 7 categories such as:
 * Thymeleaf
 * Bootstrap
 * HTML, CSS
+### Design patterns
+* Model-view-controller (MVC)
+* Data Access Object (DAO)
 ## Enpoints
 ```
 https://pl-web-news.herokuapp.com/
