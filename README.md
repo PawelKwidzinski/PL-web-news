@@ -1,7 +1,7 @@
 # News-app
 https://pl-web-news.herokuapp.com/
 ## General
-Application to shows headlines from polish websites. Data is from [remote API](https://newsapi.org/account) and storage in remote MySQL Database. News is updated automatically every 1 hour.
+Application to display headlines from Polish websites with 7 categories such as: general, business, sports, technologies, science, health, entertainment. Data is from [remote API](https://newsapi.org/account) and storage in remote MySQL Database. With each start of application database is droped and new data is uploaded from the remote Api.
 ## Technologies
 * Java 8
 * Maven
