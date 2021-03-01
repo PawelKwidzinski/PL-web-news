@@ -3,7 +3,7 @@ https://pl-web-news.herokuapp.com/
 ## General
 Application to shows headlines from polish websites. Data is from [remote API](https://newsapi.org/account) and storage in remote MySQL Database. News is updated automatically every 1 hour.
 ## Technologies
-* Java 11
+* Java 8
 * Maven
 * Spring Boot 2.4.0
 * JDBC
