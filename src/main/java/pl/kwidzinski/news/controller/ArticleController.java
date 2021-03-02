@@ -19,12 +19,6 @@ public class ArticleController {
         this.newsDao = newsDao;
     }
 
-    @GetMapping("/general")
-    public String getGeneralArticles(Model model) {
-        model.addAttribute("generalArticles", newsDao.findAll(Category.GENERAL.getTableName()));
-        return "general";
-    }
-
     @GetMapping("/business")
     public String getBusinessArticles(Model model) {
         model.addAttribute("businessArticles", newsDao.findAll(Category.BUSINESS.getTableName()));
