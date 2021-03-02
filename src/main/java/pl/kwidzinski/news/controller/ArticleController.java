@@ -12,7 +12,7 @@ import pl.kwidzinski.news.dao.NewsDao;
 @RequestMapping("/news")
 public class ArticleController {
 
-    private NewsDao newsDao;
+    private final NewsDao newsDao;
 
     @Autowired
     public ArticleController(final NewsDao newsDao) {
@@ -54,6 +54,7 @@ public class ArticleController {
         model.addAttribute("healthArticles", newsDao.findAll(Category.HEALTH.getTableName()));
         return "health";
     }
+
     @GetMapping("/entertainment")
     public String getEntertainmentArticles(Model model) {
         model.addAttribute("entertainmentArticles", newsDao.findAll(Category.ENTERTAINMENT.getTableName()));
