@@ -11,15 +11,8 @@ import pl.kwidzinski.news.dao.NewsDao;
 @RequestMapping("/")
 public class IndexController {
 
-    private final NewsDao newsDao;
-
-    public IndexController(final NewsDao newsDao) {
-        this.newsDao = newsDao;
-    }
-
     @GetMapping("/")
-    public String getGeneralArticles(Model model) {
-        model.addAttribute("generalArticles", newsDao.findAll(Category.GENERAL.getTableName()));
-        return "general";
+    public String index() {
+        return "redirect:/news/general";
     }
 }
