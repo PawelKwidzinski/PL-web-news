@@ -1,5 +1,4 @@
-# PL-Web-News-app - in progress
-https://pl-web-news.herokuapp.com/
+# PL-Web-News-app
 ## General
 Application to display headlines from Polish websites in 7 categories such as: general, business, sports, technologies, science, health, entertainment. Data is from [remote API](https://newsapi.org/account) and storaged in remote MySQL Database. With each start of application database is dropped and new data is uploaded from the remote Api.
 ## Technologies
@@ -35,3 +34,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 #API
 apiKey=
 ```
+## Screenshots
+![alt text](https://github.com/PawelKwidzinski/PL-web-news/blob/master/screens/1_general.png)
+![alt text](https://github.com/PawelKwidzinski/PL-web-news/blob/master/screens/2_sport.png)
+![alt text](https://github.com/PawelKwidzinski/PL-web-news/blob/master/screens/3_nauka.png)
