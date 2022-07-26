@@ -1,4 +1,4 @@
-package pl.kwidzinski.news.api;
+package pl.kwidzinski.news.model;
 
 public enum Country {
     PL("pl"), EN("en"), DE("de");

@@ -1,5 +1,5 @@
 
-package pl.kwidzinski.news.model;
+package pl.kwidzinski.news.api.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,14 +17,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "totalResults",
     "articles"
 })
-public class News {
+public class NewsApi {
 
     @JsonProperty("status")
     private String status;
     @JsonProperty("totalResults")
     private Integer totalResults;
     @JsonProperty("articles")
-    private List<Article> articles = null;
+    private List<ArticleApi> articleApis = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -49,13 +49,13 @@ public class News {
     }
 
     @JsonProperty("articles")
-    public List<Article> getArticles() {
-        return articles;
+    public List<ArticleApi> getArticles() {
+        return articleApis;
     }
 
     @JsonProperty("articles")
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setArticles(List<ArticleApi> articleApis) {
+        this.articleApis = articleApis;
     }
 
     @JsonAnyGetter

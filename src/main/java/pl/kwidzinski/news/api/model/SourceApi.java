@@ -1,5 +1,5 @@
 
-package pl.kwidzinski.news.model;
+package pl.kwidzinski.news.api.model;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "id",
     "name"
 })
-public class Source {
+public class SourceApi {
 
     @JsonProperty("id")
     private Object id;

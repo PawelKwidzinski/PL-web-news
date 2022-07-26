@@ -1,135 +1,33 @@
-
 package pl.kwidzinski.news.model;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "source",
-    "author",
-    "title",
-    "description",
-    "url",
-    "urlToImage",
-    "publishedAt",
-    "content"
-})
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@Entity
 public class Article {
 
-    @JsonProperty("source")
-   private Source source;
-    @JsonProperty("author")
-    private String author;
-    @JsonProperty("title")
+    @Id
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
+    private Long id;
     private String title;
-    @JsonProperty("description")
+    private String imageUrl;
+    @Lob
     private String description;
-    @JsonProperty("url")
+    @Lob
     private String url;
-    @JsonProperty("urlToImage")
-    private String urlToImage;
-    @JsonProperty("publishedAt")
-    private String publishedAt;
-    @JsonProperty("content")
-    private String content;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("source")
-    public Source getSource() {
-        return source;
-    }
-
-    @JsonProperty("source")
-    public void setSource(Source source) {
-        this.source = source;
-    }
-
-    @JsonProperty("author")
-    public String getAuthor() {
-        return author;
-    }
-
-    @JsonProperty("author")
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    @JsonProperty("title")
-    public String getTitle() {
-        return title;
-    }
-
-    @JsonProperty("title")
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @JsonProperty("description")
-    public String getDescription() {
-        return description;
-    }
-
-    @JsonProperty("description")
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonProperty("urlToImage")
-    public String getUrlToImage() {
-        return urlToImage;
-    }
-
-    @JsonProperty("urlToImage")
-    public void setUrlToImage(String urlToImage) {
-        this.urlToImage = urlToImage;
-    }
-
-    @JsonProperty("publishedAt")
-    public String getPublishedAt() {
-        return publishedAt;
-    }
-
-    @JsonProperty("publishedAt")
-    public void setPublishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
-    }
-
-    @JsonProperty("content")
-    public String getContent() {
-        return content;
-    }
-
-    @JsonProperty("content")
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    private LocalDateTime publicationDate;
+    private String country;
+    private String category;
 }
