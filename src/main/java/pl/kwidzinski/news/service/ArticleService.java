@@ -46,7 +46,7 @@ public class ArticleService {
         }
         final List<Article> duplicateArticles = articlesFromApi.stream()
                 .flatMap(fromApi -> articlesByCategory.stream()
-                        .filter(fromDb -> fromApi.getUrl().equals(fromDb.getUrl())))
+                        .filter(fromDb -> fromApi.getTitle().equals(fromDb.getTitle())))
                 .peek(article -> article.setId(null))
                 .collect(Collectors.toList());
         if (!duplicateArticles.isEmpty()) {
