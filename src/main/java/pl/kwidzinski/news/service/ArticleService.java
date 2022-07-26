@@ -26,7 +26,7 @@ public class ArticleService {
         return articleRepository.findArticleByCategory(category);
     }
 
-    @Scheduled(fixedDelay = 3600000)
+    @Scheduled(fixedDelay = 7200000)
     public void saveSportArticles() {
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.GENERAL.getName());
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.BUSINESS.getName());
