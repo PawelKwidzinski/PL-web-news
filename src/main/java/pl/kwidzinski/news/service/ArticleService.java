@@ -23,7 +23,7 @@ public class ArticleService {
     private final Logger logger = LoggerFactory.getLogger(ArticleService.class);
 
     public List<Article> findAllByCategory(String category) {
-        return articleRepository.findArticleByCategory(category);
+        return articleRepository.findArticleByCategoryOrderByPublicationDateDesc(category);
     }
 
     @Scheduled(fixedDelay = 7200000)

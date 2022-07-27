@@ -10,4 +10,5 @@ import java.util.List;
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
     List<Article> findArticleByCategory(String category);
+    List<Article> findArticleByCategoryOrderByPublicationDateDesc(String category);
 }
