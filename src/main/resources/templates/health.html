@@ -17,6 +17,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
+                        <p class="card-date" th:text="${#temporals.format(article.getPublicationDate(), 'dd-MM-yyyy HH:mm')}"></p>
                         <h5 class="card-title" th:text="${article.getTitle()}">Card title</h5>
                         <p class="card-text" th:text="${article.getDescription()}"></p>
                         <a th:href="${article.getUrl()}" class="btn btn-primary stretched-link">Więcej</a>
