@@ -10,10 +10,11 @@
 
 <div class="container">
     <div class="row">
-        <div class="card mb-3" th:each="article : ${businessArticles}">
+        <div class="card col-md-12 mb-3" th:each="article : ${businessArticles}">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img class="card-img" th:src="${article.getImageUrl()}" alt="Card image cap">
+                    <img class="card-img" th:if="${article.getImageUrl() == null}" th:src="@{/images/newspaper_640.jpg}" alt="Card image cap">
+                    <img class="card-img" th:unless="${article.getImageUrl() == null}" th:src="${article.getImageUrl()}" alt="Card image cap">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">

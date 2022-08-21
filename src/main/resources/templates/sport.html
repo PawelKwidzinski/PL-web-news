@@ -10,10 +10,11 @@
 
 <div class="container">
     <div class="row" th:each="article : ${sportArticles}">
-        <div class="card mb-3">
+        <div class="card col-md-12 mb-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img class="card-img" th:src="${article.getImageUrl()}" alt="Card image">
+                    <img class="card-img" th:if="${article.getImageUrl() == null}" th:src="@{/images/newspaper_640.jpg}" alt="Card image cap">
+                    <img class="card-img" th:unless="${article.getImageUrl() == null}" th:src="${article.getImageUrl()}" alt="Card image cap">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -30,18 +31,18 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item" th:if="${sportArticles.getNumber() > 0}">
-                    <a class="page-link" th:href="@{/news/sport(page=${sportArticles.getNumber() - 1}, size=${sportArticles.getSize()})}">Previous</a>
+                    <a class="page-link" th:href="@{/news/sports(page=${sportArticles.getNumber() - 1}, size=${sportArticles.getSize()})}">Previous</a>
                 </li>
                 <li class="page-item" th:each="number : ${#numbers.sequence(sportArticles.getNumber() - 3, sportArticles.getNumber() - 1)}"
                     th:if="${number >= 0}">
-                    <a class="page-link" th:href="@{/news/sport(page=${number}, size=${sportArticles.getSize()})}" th:text="${number + 1}"></a>
+                    <a class="page-link" th:href="@{/news/sports(page=${number}, size=${sportArticles.getSize()})}" th:text="${number + 1}"></a>
                 </li>
                 <li class="page-item" th:each="number : ${#numbers.sequence(sportArticles.getNumber(), sportArticles.getNumber() + 3)}"
                     th:if="${number <= sportArticles.getTotalPages()-1}">
-                    <a class="page-link" th:href="@{/news/sport(page=${number}, size=${sportArticles.getSize()})}" th:text="${number + 1}"></a>
+                    <a class="page-link" th:href="@{/news/sports(page=${number}, size=${sportArticles.getSize()})}" th:text="${number + 1}"></a>
                 </li>
                 <li class="page-item" th:if="${sportArticles.getNumber() < sportArticles.getTotalPages() - 1}">
-                    <a class="page-link" th:href="@{/news/sport(page=${sportArticles.getNumber() + 1}, size=${sportArticles.getSize()})}">Next</a>
+                    <a class="page-link" th:href="@{/news/sports(page=${sportArticles.getNumber() + 1}, size=${sportArticles.getSize()})}">Next</a>
                 </li>
             </ul>
         </nav>
