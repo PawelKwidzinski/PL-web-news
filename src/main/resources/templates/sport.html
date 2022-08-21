@@ -26,6 +26,26 @@
             </div>
         </div>
     </div>
+    <div class="row col-md-12 justify-content-center" style="margin-top: 15px">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item" th:if="${sportArticles.getNumber() > 0}">
+                    <a class="page-link" th:href="@{/news/sport(page=${sportArticles.getNumber() - 1}, size=${sportArticles.getSize()})}">Previous</a>
+                </li>
+                <li class="page-item" th:each="number : ${#numbers.sequence(sportArticles.getNumber() - 3, sportArticles.getNumber() - 1)}"
+                    th:if="${number >= 0}">
+                    <a class="page-link" th:href="@{/news/sport(page=${number}, size=${sportArticles.getSize()})}" th:text="${number + 1}"></a>
+                </li>
+                <li class="page-item" th:each="number : ${#numbers.sequence(sportArticles.getNumber(), sportArticles.getNumber() + 3)}"
+                    th:if="${number <= sportArticles.getTotalPages()-1}">
+                    <a class="page-link" th:href="@{/news/sport(page=${number}, size=${sportArticles.getSize()})}" th:text="${number + 1}"></a>
+                </li>
+                <li class="page-item" th:if="${sportArticles.getNumber() < sportArticles.getTotalPages() - 1}">
+                    <a class="page-link" th:href="@{/news/sport(page=${sportArticles.getNumber() + 1}, size=${sportArticles.getSize()})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 <div th:replace="fragments :: footer"></div>

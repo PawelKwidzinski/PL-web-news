@@ -26,6 +26,26 @@
             </div>
         </div>
     </div>
+    <div class="row col-md-12 justify-content-center" style="margin-top: 15px">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item" th:if="${generalArticles.getNumber() > 0}">
+                    <a class="page-link" th:href="@{/news/general(page=${generalArticles.getNumber() - 1}, size=${generalArticles.getSize()})}">Previous</a>
+                </li>
+                <li class="page-item" th:each="number : ${#numbers.sequence(generalArticles.getNumber() - 3, generalArticles.getNumber() - 1)}"
+                    th:if="${number >= 0}">
+                    <a class="page-link" th:href="@{/news/general(page=${number}, size=${generalArticles.getSize()})}" th:text="${number + 1}"></a>
+                </li>
+                <li class="page-item" th:each="number : ${#numbers.sequence(generalArticles.getNumber(), generalArticles.getNumber() + 3)}"
+                    th:if="${number <= generalArticles.getTotalPages()-1}">
+                    <a class="page-link" th:href="@{/news/general(page=${number}, size=${generalArticles.getSize()})}" th:text="${number + 1}"></a>
+                </li>
+                <li class="page-item" th:if="${generalArticles.getNumber() < generalArticles.getTotalPages() - 1}">
+                    <a class="page-link" th:href="@{/news/general(page=${generalArticles.getNumber() + 1}, size=${generalArticles.getSize()})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 <div th:replace="fragments :: footer"></div>

@@ -3,6 +3,8 @@ package pl.kwidzinski.news.service;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.kwidzinski.news.api.DataFetcher;
@@ -22,11 +24,11 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
     private final Logger logger = LoggerFactory.getLogger(ArticleService.class);
 
-    public List<Article> findAllByCategory(String category) {
-        return articleRepository.findArticleByCategoryOrderByPublicationDateDesc(category);
+    public Page<Article> findAllByCategory(String category, PageRequest request) {
+      return articleRepository.findArticleByCategoryOrderByPublicationDateDesc(category, request);
     }
 
-    @Scheduled(fixedDelay = 7200000)
+    @Scheduled(fixedDelay = 10800000)
     public void saveSportArticles() {
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.GENERAL.getName());
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.BUSINESS.getName());
@@ -37,6 +39,7 @@ public class ArticleService {
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.ENTERTAINMENT.getName());
     }
 
+//    TODO dodać sprawdzenie czy artykuły z danego dnia sie nie duplikują
     public void saveArticlesByCategory(String country, String category) {
         final List<Article> articlesFromApi = dataFetcher.articlesFromApi(country, category);
         final List<Article> articlesByCategory = articleRepository.findArticleByCategory(category);
