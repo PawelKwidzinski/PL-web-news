@@ -31,18 +31,18 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item" th:if="${technologiesArticles.getNumber() > 0}">
-                    <a class="page-link" th:href="@{/news/technology(page=${technologiesArticles.getNumber() - 1}, size=${technologiesArticles.getSize()})}">Previous</a>
+                    <a class="page-link" th:href="@{/news/technologies(page=${technologiesArticles.getNumber() - 1}, size=${technologiesArticles.getSize()})}">Previous</a>
                 </li>
                 <li class="page-item" th:each="number : ${#numbers.sequence(technologiesArticles.getNumber() - 3, technologiesArticles.getNumber() - 1)}"
                     th:if="${number >= 0}">
-                    <a class="page-link" th:href="@{/news/technology(page=${number}, size=${technologiesArticles.getSize()})}" th:text="${number + 1}"></a>
+                    <a class="page-link" th:href="@{/news/technologies(page=${number}, size=${technologiesArticles.getSize()})}" th:text="${number + 1}"></a>
                 </li>
                 <li class="page-item" th:each="number : ${#numbers.sequence(technologiesArticles.getNumber(), technologiesArticles.getNumber() + 3)}"
                     th:if="${number <= technologiesArticles.getTotalPages()-1}">
-                    <a class="page-link" th:href="@{/news/technology(page=${number}, size=${technologiesArticles.getSize()})}" th:text="${number + 1}"></a>
+                    <a class="page-link" th:href="@{/news/technologies(page=${number}, size=${technologiesArticles.getSize()})}" th:text="${number + 1}"></a>
                 </li>
                 <li class="page-item" th:if="${technologiesArticles.getNumber() < technologiesArticles.getTotalPages() - 1}">
-                    <a class="page-link" th:href="@{/news/technology(page=${technologiesArticles.getNumber() + 1}, size=${technologiesArticles.getSize()})}">Next</a>
+                    <a class="page-link" th:href="@{/news/technologies(page=${technologiesArticles.getNumber() + 1}, size=${technologiesArticles.getSize()})}">Next</a>
                 </li>
             </ul>
         </nav>
