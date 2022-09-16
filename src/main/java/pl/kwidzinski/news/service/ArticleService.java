@@ -28,8 +28,8 @@ public class ArticleService {
       return articleRepository.findArticleByCategoryOrderByPublicationDateDesc(category, request);
     }
 
-    @Scheduled(fixedDelay = 10800000)
-    public void saveSportArticles() {
+    @Scheduled(fixedDelay = 14200000)
+    public void saveArticles() {
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.GENERAL.getName());
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.BUSINESS.getName());
         saveArticlesByCategory(Country.PL.getName(), NewsCategory.SPORT.getName());
